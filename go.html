@@ -1,0 +1,24 @@
+{% extends "master.html" %} {% block title %} Results {% endblock %} {% block
+message %}
+<hr />
+<h4 class="text-center">MESSAGE</h4>
+<p class="text-center"><i>{{query}}</i></p>
+{% endblock %} {% block content %}
+<h1 class="text-center">Result</h1>
+<div class="row">
+  {% for category, classification in classification_result.items() %}
+  <div class="col-md-3">
+    {% if classification == 1 %}
+    <div class="list-group-item list-group-item-success text-center">
+      {{category.replace('', ' ').title()}}
+    </div>
+    {% else %}
+    <div class="list-group-item list-group-item-dark text-center">
+      {{category.replace('', ' ').title()}}
+    </div>
+    {% endif %}
+  </div>
+  {% if loop.index is divisibleby 4 %}
+</div>
+<div class="row">{% endif %} {% endfor %}</div>
+{% endblock %}
